@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.10"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="id"
+            android:id="@+id/id"
+            android:textStyle="bold"
+            android:gravity="center|center_vertical"
+            android:background="@color/accent_material_light" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.15"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="quantidade"
+            android:id="@+id/quantidade"
+            android:textStyle="bold"
+            android:gravity="center|center_vertical"
+            android:background="@color/accent_material_dark" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.15"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="unidade"
+            android:textStyle="bold"
+            android:id="@+id/unidade"
+            android:gravity="left|center_vertical"
+            android:background="@color/accent_material_dark" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.60"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="descricao"
+            android:id="@+id/descricao"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:background="@color/accent_material_light" />
+</LinearLayout>
