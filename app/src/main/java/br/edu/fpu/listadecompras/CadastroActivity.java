@@ -12,11 +12,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import br.edu.fpu.listadecompras.database.DBHandler;
+import br.edu.fpu.listadecompras.domain.Item;
+import br.edu.fpu.listadecompras.domain.Status;
+import br.edu.fpu.listadecompras.domain.Unidade;
+
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText editTextNome;
     private EditText editTextQuantidade;
     private RadioGroup radioGroup;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +33,36 @@ public class CadastroActivity extends AppCompatActivity {
         editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
         radioGroup = ((RadioGroup) findViewById(R.id.radioGroup));
         //carregarItens();
+        dbHandler = new DBHandler(this);
     }
 
     public void salvar(View view) {
         String nome = editTextNome.getText().toString();
-        int quantidade  = Integer.parseInt(editTextQuantidade.getText().toString());
-        String unidade;
+        Double quantidade  = Double.parseDouble(editTextQuantidade.getText().toString());
+        Unidade unidade;
         if (radioGroup.getCheckedRadioButtonId() == R.id.radioButtonLitros) {
-            unidade = "L";
+            unidade = Unidade.LITROS;
         } else {
-            unidade = "kg";
+            unidade = Unidade.QUILOS;
         }
         adicionarItem(nome, quantidade, unidade);
         Intent intent = new Intent(this, ListaActivity.class);
         startActivity(intent);
     }
 
-    private void adicionarItem(String descricao, int quantidade, String unidade) {
-        Map<String, Object> item = new HashMap<String, Object>();
-        item.put("quantidade", quantidade);
-        item.put("unidade", unidade);
-        item.put("descricao", descricao);
-        Repositorio.addItem(item);
+    private void adicionarItem(String descricao, double quantidade, Unidade unidade) {
+        Item item = new Item();
+        item.setDescricao(descricao);
+        item.setUnidade(Unidade.LITROS);
+        item.setStatus(Status.PRECISA_COMPRAR);
+        item.setQuantidade(quantidade);
+        dbHandler.addItem(item);
     }
+
+
+
+
+
 
     private void carregarItens() {
         Map<String, Object> item = new HashMap<String, Object>();
