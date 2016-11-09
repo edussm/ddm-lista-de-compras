@@ -62,7 +62,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Item getItem(int id) {
+    public Item getItem(Long id) {
         Item item = null;
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -120,13 +120,10 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public void deleteItem(Item item) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_COMPRAS, KEY_ID + " = ?",
-                new String[] { String.valueOf(item.getId()) });
-        db.close();
+        deleteItem(item.getId());
     }
 
-    public void deleteItem(int id) {
+    public void deleteItem(Long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_COMPRAS, KEY_ID + " = ?",
                 new String[] { String.valueOf(id) });
