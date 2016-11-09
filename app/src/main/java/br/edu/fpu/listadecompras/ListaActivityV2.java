@@ -3,15 +3,12 @@ package br.edu.fpu.listadecompras;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.LoginFilter;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -24,13 +21,12 @@ import java.util.Map;
 import br.edu.fpu.listadecompras.database.DBHandler;
 import br.edu.fpu.listadecompras.domain.Item;
 
-public class ListaActivity extends AppCompatActivity
+public class ListaActivityV2 extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
 
     private List<Map<String, Object>> itens;
     private DBHandler dbHandler;
     private ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +39,7 @@ public class ListaActivity extends AppCompatActivity
 
         dbHandler = new DBHandler(this);
 
-        itens = listarItens();
-
-        SimpleAdapter adapter = new SimpleAdapter(this, itens,
+        SimpleAdapter adapter = new SimpleAdapter(this, listarItens(),
                 R.layout.list_item, de, para);
         listView.setAdapter(adapter);
 
@@ -118,24 +112,13 @@ public class ListaActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        reloadList();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        reloadList();
-    }
-
-    private void reloadList() {
-        itens = listarItens();
-        ((SimpleAdapter) listView.getAdapter()).notifyDataSetChanged();
-        listView.invalidateViews();
-    }
-
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view,
+//                            int position, long id) {
+//        Map<String, Object> map = itens.get(position);
+//        String item = (String) map.get("descricao");
+//        Toast.makeText(this, "Item Selecionado: "+ item,Toast.LENGTH_SHORT).show();
+//    }
 
     private List<Map<String, Object>> listarItens() {
         itens = new ArrayList<>();

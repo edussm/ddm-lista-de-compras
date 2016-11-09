@@ -46,8 +46,9 @@ public class CadastroActivity extends AppCompatActivity {
             unidade = Unidade.QUILOS;
         }
         adicionarItem(nome, quantidade, unidade);
-        Intent intent = new Intent(this, ListaActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ListaActivity.class);
+        //startActivity(intent);
+        finish();
     }
 
     private void adicionarItem(String descricao, double quantidade, Unidade unidade) {
