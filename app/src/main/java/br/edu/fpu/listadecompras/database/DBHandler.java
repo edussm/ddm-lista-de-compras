@@ -126,5 +126,12 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteItem(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_COMPRAS, KEY_ID + " = ?",
+                new String[] { String.valueOf(id) });
+        db.close();
+    }
+
 }
 

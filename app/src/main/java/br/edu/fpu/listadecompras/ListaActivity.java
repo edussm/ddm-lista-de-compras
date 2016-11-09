@@ -84,10 +84,11 @@ public class ListaActivity extends AppCompatActivity
         if (item.getItemId() == 1) {
             Toast.makeText(getApplicationContext(),
                     "Editar " + i.get("descricao"), Toast.LENGTH_LONG).show();
-
+            // ID do elemento: i.get("id")
         } else if (item.getItemId() == 2) {
             Toast.makeText(getApplicationContext(),
                     "Comprar " + i.get("descricao"), Toast.LENGTH_LONG).show();
+
         } else {
             return false;
         }
