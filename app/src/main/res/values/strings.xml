@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Lista de Compras</string>
+    <string name="web_service_root_url">http://104.131.103.40:8080/rest</string>
     <string name="action_add">Adicionar</string>
+    <string name="action_buscar">Buscar Produto</string>
+    <string name="action_atualizar">Buscar Produtos</string>
+
 </resources>

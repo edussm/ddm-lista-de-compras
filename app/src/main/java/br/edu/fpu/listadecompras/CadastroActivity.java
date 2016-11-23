@@ -32,7 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
         editTextNome = (EditText) findViewById(R.id.editTextNome);
         editTextQuantidade = (EditText) findViewById(R.id.editTextQuantidade);
         radioGroup = ((RadioGroup) findViewById(R.id.radioGroup));
-        //carregarItens();
+
         dbHandler = new DBHandler(this);
     }
 
@@ -40,14 +40,14 @@ public class CadastroActivity extends AppCompatActivity {
         String nome = editTextNome.getText().toString();
         Double quantidade  = Double.parseDouble(editTextQuantidade.getText().toString());
         Unidade unidade;
+
         if (radioGroup.getCheckedRadioButtonId() == R.id.radioButtonLitros) {
             unidade = Unidade.LITROS;
         } else {
             unidade = Unidade.QUILOS;
         }
+
         adicionarItem(nome, quantidade, unidade);
-        //Intent intent = new Intent(this, ListaActivity.class);
-        //startActivity(intent);
         finish();
     }
 
@@ -60,40 +60,4 @@ public class CadastroActivity extends AppCompatActivity {
         dbHandler.addItem(item);
     }
 
-
-
-
-
-
-    private void carregarItens() {
-        Map<String, Object> item = new HashMap<String, Object>();
-        item.put("quantidade", 1);
-        item.put("unidade", "l");
-        item.put("descricao","Leite");
-        Repositorio.addItem(item);
-
-        item = new HashMap<String, Object>();
-        item.put("quantidade", 2);
-        item.put("unidade", "kg");
-        item.put("descricao","Feijao");
-        Repositorio.addItem(item);
-
-        for (int i = 0; i < 20; i++) {
-            Repositorio.addItem(geraItem(i));
-        }
-    }
-
-    String bebidas[] = {"Leite", "Refrigerante", "Suco", "Cerveja"};
-    Random r = new Random(System.currentTimeMillis());
-
-
-    private Map<String, Object> geraItem(int id) {
-
-        Map<String, Object> item = new HashMap<String, Object>();
-        item.put("id", id);
-        item.put("quantidade", r.nextInt(5)+1);
-        item.put("unidade", "litros");
-        item.put("descricao",bebidas[r.nextInt(bebidas.length-1)]);
-        return item;
-    }
 }

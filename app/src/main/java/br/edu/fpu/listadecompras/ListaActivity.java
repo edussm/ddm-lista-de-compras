@@ -38,16 +38,10 @@ public class ListaActivity extends AppCompatActivity
         setContentView(R.layout.activity_lista);
         listView = (ListView) findViewById(R.id.listView);
 
-        String[] de = {"id", "quantidade", "unidade", "descricao"};
-        int[] para = {R.id.id, R.id.quantidade, R.id.unidade, R.id.descricao};
-
         dbHandler = new DBHandler(this);
 
-        itens = listarItens();
-
-        SimpleAdapter adapter = new SimpleAdapter(this, itens,
-                R.layout.list_item, de, para);
-        listView.setAdapter(adapter);
+        // Instancia o adapter e carrega os dados na ListView
+        loadListView();
 
         listView.setOnItemClickListener(this);
 
@@ -107,34 +101,45 @@ public class ListaActivity extends AppCompatActivity
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_add:
-                newItem();
+                navigateTo(CadastroActivity.class);
+                return true;
+            case R.id.action_buscar:
+                navigateTo(BuscaProdutoRestActivity.class);
+                return true;
+            case R.id.action_listar:
+                navigateTo(BuscaListaDeProdutosRestActivity.class);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void newItem() {
-        Intent intent = new Intent(this, CadastroActivity.class);
+    private void navigateTo(Class c) {
+        Intent intent = new Intent(this, c);
         startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        reloadList();
+        loadListView();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        reloadList();
+        loadListView();
     }
 
-    private void reloadList() {
+    private void loadListView() {
+        String[] de = {"id", "quantidade", "unidade", "descricao"};
+        int[] para = {R.id.id, R.id.quantidade, R.id.unidade, R.id.descricao};
+
         itens = listarItens();
-        ((SimpleAdapter) listView.getAdapter()).notifyDataSetChanged();
-        listView.invalidateViews();
+
+        SimpleAdapter adapter = new SimpleAdapter(this, itens,
+                R.layout.list_item, de, para);
+        listView.setAdapter(adapter);
     }
 
 

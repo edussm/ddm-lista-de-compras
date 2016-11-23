@@ -4,7 +4,17 @@
     tools:context=".ListaActivity">
     <item
         android:id="@+id/action_add"
-        android:icon="@drawable/add"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="@string/action_add"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_buscar"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/action_buscar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_listar"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="@string/action_atualizar"
         app:showAsAction="ifRoom" />
 </menu>
