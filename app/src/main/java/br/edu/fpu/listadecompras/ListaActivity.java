@@ -79,10 +79,12 @@ public class ListaActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(),
                     "Editar " + i.get("descricao"), Toast.LENGTH_LONG).show();
             // ID do elemento: i.get("id")
+            //Intent intent = new Intent()
         } else if (item.getItemId() == 2) {
             Toast.makeText(getApplicationContext(),
                     "Comprar " + i.get("descricao"), Toast.LENGTH_LONG).show();
-
+            dbHandler.deleteItem((Long) i.get("id"));
+            loadListView();
         } else {
             return false;
         }
@@ -108,6 +110,9 @@ public class ListaActivity extends AppCompatActivity
                 return true;
             case R.id.action_listar:
                 navigateTo(BuscaListaDeProdutosRestActivity.class);
+                return true;
+            case R.id.action_criar:
+                navigateTo(CriaProdutoRestActivity.class);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -163,7 +163,6 @@ public class BuscaListaDeProdutosRestActivity extends AppCompatActivity
                         .add(new MappingJackson2HttpMessageConverter());
                 Produtos produtos =
                         restTemplate.getForObject(url, Produtos.class);
-                System.out.println(produtos);
                 return produtos.getContent();
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);

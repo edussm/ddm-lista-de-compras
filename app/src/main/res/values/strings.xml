@@ -4,5 +4,6 @@
     <string name="action_add">Adicionar</string>
     <string name="action_buscar">Buscar Produto</string>
     <string name="action_atualizar">Buscar Produtos</string>
+    <string name="action_criar">Criar Produto</string>
 
 </resources>

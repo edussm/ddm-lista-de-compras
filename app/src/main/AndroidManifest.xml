@@ -19,12 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroActivity"
-            android:label="Cadastro de Itens"/>
-        <activity android:name=".BuscaProdutoRestActivity"
-            android:label="Busca usando REST"/>
-        <activity android:name=".BuscaListaDeProdutosRestActivity"
-            android:label="Busca de Produtos"/>
+        <activity
+            android:name=".CadastroActivity"
+            android:label="Cadastro de Itens" />
+        <activity
+            android:name=".BuscaProdutoRestActivity"
+            android:label="Busca usando REST" />
+        <activity
+            android:name=".BuscaListaDeProdutosRestActivity"
+            android:label="Busca de Produtos" />
+        <activity android:name=".CriaProdutoRestActivity"></activity>
     </application>
 
 </manifest>

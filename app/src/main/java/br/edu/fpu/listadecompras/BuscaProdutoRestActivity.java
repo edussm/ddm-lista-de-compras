@@ -51,7 +51,8 @@ public class BuscaProdutoRestActivity extends AppCompatActivity {
             // Fazer o teclado sumir da tela
             View v = this.getCurrentFocus();
             if (v != null) {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm =
+                        (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
 
